@@ -21,7 +21,7 @@ LTG = st.number_input('Serum Triglycerides Level')
 GLU = st.number_input('Blood Glucose Level')
 
 if st.button('Predict'):
-    input_data = np.array([[GLU, BMI, BP, TC, LDL, HDL, TCH, LTG]])
+    input_data = np.array([[age:Age, sex:Sex, bmi:BMI, bp:BP, s1:TC, s2:LDL, s3:HDL, s4:TCH, s5:LTG, s6:GLU]])
     scaled_input = scaler.transform(input_data)
     result = model.predict(scaled_input)
     st.success(f'Prediction: {result[0]}')
