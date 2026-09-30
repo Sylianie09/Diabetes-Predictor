@@ -24,4 +24,14 @@ if st.button('Predict'):
     input_data = np.array([[age, sex, bmi, bp, s1, s2, s3, s4, s5, s6]])
     scaled_input = scaler.transform(input_data)
     result = model.predict(scaled_input)
-    st.success(f'Prediction: {result[0]}')
+    Prediction = float(result[0])
+
+# Adding visuals to emphasize risk
+    if prediction < 100:
+        st.success(f"Prediction Score: {prediction:.2f} — Low Disease Progression Risk")
+    elif 100 <= prediction < 200:
+        st.warning(f"Prediction Score: {prediction:.2f} — Moderate Disease Progression Risk")
+    else:
+        st.error(f"Prediction Score: {prediction:.2f} — High Disease Progression Risk!")
+
+st.caption("This is a learning demo, not a real medical tool.")
